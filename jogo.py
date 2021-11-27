@@ -3,20 +3,24 @@ import pygame
 from pygame.locals import *
 import random
 
-#define tamanho da tela
-LARGURA = 400
+#define condições 
+pygame.display.set_caption('FlappyFox')
+LARGURA = 500
 ALTURA = 600
 VELOCIDADE = 10
 GRAVIDADE = 1
 VEL_JOGO = 10 
-
 LARGURA_CHAO = 2 * LARGURA
 ALTURA_CHAO = 100
-
 LARGURA_CANO = 80
 ALTURA_CANO = 500
-
 ESPACO_CANO = 200
+
+#definindo a música
+#musica = pygame.mixer.music.load('adicionar uma música aquii')
+#definindo a tela inicial
+inicial = pygame.image.load('inicial.JPEG')
+
 
 #criando classes para definir imagens e movimentos
 class Raposa(pygame.sprite.Sprite):
@@ -43,8 +47,9 @@ class Raposa(pygame.sprite.Sprite):
 
     def pulo(self):
         self.speed = - VELOCIDADE
-class Canos(pygame.sprite.Sprite):
 
+#classe dos canos para demonstrar as imagens
+class Canos(pygame.sprite.Sprite):
     def __init__(self, inverted, x, tamanho_cano):
         pygame.sprite.Sprite.__init__(self)
 
@@ -62,12 +67,13 @@ class Canos(pygame.sprite.Sprite):
 
 
         self.mask = pygame.mask.from_surface(self.image)
-        
+
+    #passagems dos canos velocidade definida
     def update(self):
         self.rect[0] -= VEL_JOGO
 
 
-
+#classe chão para adicionar as imagens
 class Chao(pygame.sprite.Sprite):
     
     def __init__(self, x):
@@ -80,13 +86,15 @@ class Chao(pygame.sprite.Sprite):
         self.rect[1] = ALTURA - ALTURA_CHAO
         self.rect[0] = x
 
+    #passagem do chão
     def update(self):
-
         self.rect[0] -= VEL_JOGO
 
+#caso bata fora da tetla
 def fora_da_tela(sprite):
     return sprite.rect[0] < -(sprite.rect[2])
 
+#para os canos aparecerem de forma aleatória
 def canos_aleatorios(x):
     tamanho = random.randint(100, 300)
     cano = Canos(False, x, tamanho)
@@ -103,42 +111,48 @@ BACKGROUND = pygame.image.load('background-day.png')
 #transforma para o tamanho da tela
 BACKGROUND = pygame.transform.scale(BACKGROUND, (LARGURA, ALTURA))
 
-#para mostrar a raposa no jogo
+#Cria grupos
 raposa_group = pygame.sprite.Group()
+chao_group = pygame.sprite.Group()
+cano_group = pygame.sprite.Group()
+
+#para mostrar a raposa
 raposa = Raposa()
 raposa_group.add(raposa)
 
-chao_group = pygame.sprite.Group()
-
+#para o chão ficar passando (sensação de andar)
 for i in range(2):
     chao = Chao(LARGURA_CHAO * i)
     chao_group.add(chao)
 
-
-
-cano_group = pygame.sprite.Group()
+#para os canos ficarem aparecendo na tela com um espaço entre 
 for i in range(2):
     canos = canos_aleatorios(LARGURA * i + 800)
     cano_group.add(canos[0])
     cano_group.add(canos[1])
+
 #dá um nome mais fácil para colocar o fps
 clock = pygame.time.Clock()
 
 
 
 while True:
+    #define FPS
     clock.tick(30)
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
 
+
+        #para a raposa pular
         if event.type == KEYDOWN:
             if event.key == K_SPACE:
                 raposa.pulo()
-
+    
     #mostra o fundo
     tela.blit(BACKGROUND, (0,0))
 
+    #condições -> caso a raposa colida com o cano ou com o chão
     if fora_da_tela(chao_group.sprites()[0]):
         chao_group.remove(chao_group.sprites()[0])
 
@@ -153,10 +167,12 @@ while True:
         cano_group.add(canos[0])
         cano_group.add(canos[1])
 
+    #movimentação das classes
     raposa_group.update()
     chao_group.update()
     cano_group.update()
     
+    #desenha o que irá aparecer na tela
     raposa_group.draw(tela)
     cano_group.draw(tela)
     chao_group.draw(tela)

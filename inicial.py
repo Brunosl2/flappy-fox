@@ -3,7 +3,7 @@ import pygame
 from pygame.locals import *
 
 pygame.display.set_caption('FlappyFox')
-LARGURA = 500
+LARGURA = 600
 ALTURA = 600
 VELOCIDADE = 10
 GRAVIDADE = 1

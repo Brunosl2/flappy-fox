@@ -1,7 +1,6 @@
  #importando as bibliotecas  
 import pygame
-from pygame.locals import *
-import random
+from pygame.locals import *  
 from inicial import *
 from classes import *
 
@@ -26,7 +25,7 @@ for i in range(2):
 
 #para os canos ficarem aparecendo na tela com um espaço entre 
 for i in range(2):
-    canos = canos_aleatorios(LARGURA * i + 800)
+    canos = canos_aleatorios(LARGURA * i + 1000)
     cano_group.add(canos[0])
     cano_group.add(canos[1])
 
@@ -55,8 +54,9 @@ while True:
     if fora_da_tela(chao_group.sprites()[0]):
         chao_group.remove(chao_group.sprites()[0])
 
-        novo_chao = Chao(LARGURA_CHAO - 20)
+        novo_chao = Chao(LARGURA_CHAO - 10)
         chao_group.add(novo_chao)
+
     if fora_da_tela(cano_group.sprites()[0]):
         cano_group.remove(cano_group.sprites()[0])
         cano_group.remove(cano_group.sprites()[0])

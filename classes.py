@@ -35,7 +35,7 @@ class Canos(pygame.sprite.Sprite):
     def __init__(self, inverted, x, tamanho_cano):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load('pipe-red.png').convert_alpha()
+        self.image = pygame.image.load('canos.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (LARGURA_CANO, ALTURA_CANO))
 
         self.rect = self.image.get_rect()

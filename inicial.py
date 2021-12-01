@@ -15,6 +15,6 @@ ALTURA_CANO = 500
 ESPACO_CANO = 200
 
 #define a tela de fundo
-BACKGROUND = pygame.image.load('background-day.png')
+BACKGROUND = pygame.image.load('insper.png')
 #transforma para o tamanho da tela
 BACKGROUND = pygame.transform.scale(BACKGROUND, (LARGURA, ALTURA))

@@ -1,4 +1,4 @@
-#importando as bibliotecas  
+ #importando as bibliotecas  
 import pygame
 from pygame.locals import *
 import random

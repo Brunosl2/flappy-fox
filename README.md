@@ -1,8 +1,13 @@
-Flappy Fox
+Jogo: Flappy Fox
+Integrantes: Bruno Locatelli e Julia Diniz
 
-Jogo inspirado no Flappy Bird, porém, destinado aos estudantes do Insper com uma raposa como representante!
+Ao final do 1º Semestre do Curso de Engenharia do Insper, a materia Design de Software propôs a criação de um jogo como projeto final da disciplina para que os alunos pudessem colocar em prática tudo que foi revisado durante o semestre.
+Como proposta, fizemos o jogo "Flappy Fox" onde a proposta é relaxar e se divertir enquanto joga. O jogo possui uma temática voltada para o Insper, onde o personagem principal é o mascote do Insper, uma Raposa!
+A proposta do jogo é guiar a raposa através dos obstáculos sem encostar em nenhum cano, através da tecla 'espaço'.
 
-Intuito do jogo é não deixar a raposa encostar nos tubos.
-Ao pressionar espaço a raposa irá pular.
+Portanto, espero que aproveitem enquanto jogam!
 
-Demonstração:
+Modo de jogo: a raposa irá saltar com a tecla ESPAÇO.
+
+Link de demonstração: 
+https://www.youtube.com/watch?v=10I3sRpcqw4
